@@ -1,0 +1,25 @@
+{
+  "java.project.referencedLibraries": [
+    "lib/**/*.jar",
+    "jaco-mp3-player-0.9.3.jar",
+    "mysql-connector-java-8.0.19.jar",
+    "rs2xml.jar",
+    "c:\\javafx-sdk-25.0.1\\lib\\javafx.base.jar",
+    "c:\\javafx-sdk-25.0.1\\lib\\javafx.controls.jar",
+    "c:\\javafx-sdk-25.0.1\\lib\\javafx.fxml.jar",
+    "c:\\javafx-sdk-25.0.1\\lib\\javafx.graphics.jar",
+    "c:\\javafx-sdk-25.0.1\\lib\\javafx.media.jar",
+    "c:\\javafx-sdk-25.0.1\\lib\\javafx.swing.jar",
+    "c:\\javafx-sdk-25.0.1\\lib\\javafx.web.jar",
+    "c:\\javafx-sdk-25.0.1\\lib\\javafx-swt.jar",
+    "c:\\javafx-sdk-25.0.1\\lib\\jdk.jsobject.jar",
+    "c:\\javafx-sdk-25.0.1\\lib\\jfx.incubator.input.jar",
+    "c:\\javafx-sdk-25.0.1\\lib\\jfx.incubator.richtext.jar",
+    "jaco-mp3-player-0.9.4.jar",
+    "basicplayer-3.0.0.0-javadoc.jar",
+    "jl1.0.1.jar",
+    "basicplayer-3.0.0.0-sources.jar",
+    "tritonus_share-0.3.7.jar",
+    "tritonus_mp3-0.3.6.jar"
+  ]
+}

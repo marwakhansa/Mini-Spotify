@@ -1,0 +1,71 @@
+-- Drop database if exists
+DROP DATABASE IF EXISTS userregistration;
+
+-- Create database
+CREATE DATABASE IF NOT EXISTS userregistration;
+USE userregistration;
+
+-- -------------------------------------------------------------------
+-- 1. USER TABLE (For Login and Registration)
+-- -------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS user (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100),
+    username VARCHAR(50) UNIQUE,
+    -- NOTE: Keep in mind that for security, this column should store a password hash, 
+    -- not plain text. For now, it matches your code's definition.
+    password VARCHAR(100), 
+    country VARCHAR(50),
+    gender VARCHAR(20)
+);
+
+-- Insert sample users
+INSERT INTO user (name, email, username, password, country, gender) VALUES
+('Test User', 'test@example.com', 'test123', '12345', 'Pakistan', 'Male'),
+('Ahsan', 'ahsan@gmail.com', 'ahsan', '123', 'Pakistan', 'Male')
+ON DUPLICATE KEY UPDATE username=username; -- Syntax to prevent insert failure if table exists
+
+-- -------------------------------------------------------------------
+-- 2. SONG TABLE
+-- -------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS song (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    SongName VARCHAR(255),
+    Artist VARCHAR(255),
+    Genre VARCHAR(100),
+    Duration VARCHAR(20)
+    -- file_path will be added below
+);
+
+-- Insert sample songs (MUST come before the UPDATE statements)
+INSERT INTO song (SongName, Artist, Genre, Duration) VALUES
+('Faded', 'Alan Walker', 'Electronic', '3:32'),
+('Shape of You', 'Ed Sheeran', 'Pop', '4:24'),
+('Believer', 'Imagine Dragons', 'Rock', '3:24'),
+('On My Way', 'Alan Walker', 'Pop', '3:14')
+ON DUPLICATE KEY UPDATE SongName=SongName;
+
+
+-- **Corrected ALTER TABLE syntax:**
+-- The keyword 'to column 6' is removed. Using 'ADD COLUMN' adds it to the end by default.
+ALTER TABLE song
+ADD COLUMN file_path VARCHAR(255); 
+
+
+-- Temporarily turn off safe update mode to allow mass updates based on SongName
+SET SQL_SAFE_UPDATES = 0;
+
+-- Example updates with paths
+UPDATE song SET file_path='music/Faded.mp3' WHERE SongName='Faded';
+UPDATE song SET file_path='music/Shape of You.mp3' WHERE SongName='Shape of You';
+UPDATE song SET file_path='music/Believer.mp3' WHERE SongName='Believer';
+UPDATE song SET file_path='music/On My Way.mp3' WHERE SongName='On My Way';
+
+-- Re-enable safe update mode (recommended)
+SET SQL_SAFE_UPDATES = 1;
+
+
+-- Check data
+SELECT * FROM user;
+SELECT * FROM song;
